@@ -1,35 +1,32 @@
 # tls-client-api-docker
 
-- **Dockerized**
-- [bogdanfinn/tls-client-api](https://github.com/bogdanfinn/tls-client-api)
-- ❗ Required to send `x-api-key` header to it
+dockerizing [**bogdanfinn/tls-client-api**](https://github.com/bogdanfinn/tls-client-api)
 
-## Run
+## Run the image
 
 ```bash
-# quick deploy with default auth
+# quick run using default auth keys (my-auth-key-1)
 docker run -p 8080:8080 tls-client-api
 ```
 
 ```bash
-# set custom auth and more. format is relevant!
+# custom auth keys and more. format is relevant!
 docker run -p 8080:8080 \
-  -e LOG_LEVEL=debug \
-  -e API_AUTH_KEYS=key1,key2,key3 \
+  -p 8081:8081 \
+  -e PORT=8080 \
+  -e HEALTH_PORT=8181 \
+  -e AUTH_KEYS="customkey1,customkey2" \
   tls-client-api
 ```
 
-- More settings on `VARIABLES.md`
-
 ## API Usage
 
-- For example, to forward HTTP request using parameters (such `tlsClientIdentifier`), send request like the following:
+For example, to forward HTTP request using lib parameters (such `tlsClientIdentifier`), send request like the following:
 
 ```
-x-api-key: my-auth-key-1
-POST
-https://localhost:8080/api/foward
+x-api-key: my-auth-key-1 (as header)
+POST https://localhost:8080/api/foward
 { "tlsClientIdentifier": "chrome_103", "requestMethod": "GET", "requestUrl": "http://test-website.com/", ... }
 ```
 
-- Read more on https://bogdanfinn.gitbook.io/open-source-oasis/standalone-api-application
+API documentation: https://bogdanfinn.gitbook.io/open-source-oasis/standalone-api-application
