@@ -8,7 +8,7 @@ dockerizing [**bogdanfinn/tls-client-api**](https://github.com/bogdanfinn/tls-cl
 # with custom x-api-key (default: my-auth-key-1)
 docker run -p 8080:8080 \
   -e AUTH_KEYS="customkey1,customkey2" \
-  lfsaga/tls-client-api:0.0.1
+  lfsaga/tls-client-api
 ```
 
 ## Standalone Api Application

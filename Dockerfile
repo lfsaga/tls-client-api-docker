@@ -1,6 +1,6 @@
 FROM debian:latest
 
-RUN apt-get update && apt-get install -y oftware-properties-common 
+RUN apt-get update && apt-get install -y software-properties-common 
 
 WORKDIR /opt/tls-client-api
 
